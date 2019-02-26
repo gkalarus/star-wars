@@ -1,0 +1,26 @@
+.movie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 730px;
+  height: 48px;
+  margin-top: 16px;
+  background-color: $white;
+  border-radius: 4px;
+  cursor: pointer;
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 16px;
+  }
+  .movieTitle {
+    padding-left: 15px;
+    font-weight: bold;
+    color: $dark-blue;
+  }
+
+  .arrow {
+    padding-right: 16px;
+  }
+}

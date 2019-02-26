@@ -1,0 +1,9 @@
+.movieBoard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 480px;
+  list-style-type: none;
+  border-bottom: 2px dashed $white;
+}
