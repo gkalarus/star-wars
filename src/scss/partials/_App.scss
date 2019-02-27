@@ -1,8 +1,16 @@
 .app {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   margin: 96px auto;
+  width: 100%;
   max-width: 790px;
-  height: 736px;
+  min-height: 736px;
   background-color: $main-background;
   border-radius: 8px;
   text-align: center;
+  @media (max-width: 800px) {
+    max-width: 343px;
+  }
 }

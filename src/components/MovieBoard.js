@@ -1,5 +1,5 @@
 import React from 'react';
-import Movie from '../components/Movie'
+import Movie from '../containers/Movie';
 import { ClipLoader } from 'react-spinners';
 
 const MovieBoard = ({movies, loadingMovies}) => {
@@ -8,7 +8,7 @@ const MovieBoard = ({movies, loadingMovies}) => {
 
   if(movies !== null) {
     movieList = movies.map(movie => (
-      <Movie movie={movie} />
+      <Movie key={movie.episode_id} movie={movie} />
     ))
   }
 
