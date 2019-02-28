@@ -1,0 +1,36 @@
+.planetTable {
+  border-spacing: 0 30px;
+  font-size: 12px;
+
+  thead {
+    tr {
+
+      th {
+        border-bottom: 1px solid #C4C4C4;
+        font-weight: normal;
+        padding-bottom: 7px;
+        padding-top: 13px;
+        text-align: center;
+        padding: 0 30px 7px;
+
+        &:first-child, &:last-child {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        &:last-child {
+          padding-right: 0;
+        }
+
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        text-align: center;
+      }
+    }
+  }
+}

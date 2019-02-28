@@ -1,9 +1,16 @@
 import React from 'react';
+import PlanetTable from '../components/PlanetTable';
 
-const PlanetBoard = () => {
+
+const PlanetBoard = ({planetDetails, loadingPlanets, active}) => {
   return (  
-    <div className="planetBoard"><p>Planet Board</p></div>
-  );
+      <PlanetTable 
+        planetDetails={planetDetails} 
+        loadingPlanets={loadingPlanets}
+        active={active}
+      />
+);
 }
+
  
 export default PlanetBoard;

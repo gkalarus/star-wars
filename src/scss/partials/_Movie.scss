@@ -5,7 +5,6 @@
   width: 100%;
   min-height: 48px;
   margin-top: 16px;
-  background-color: $white;
   border-radius: 4px;
   cursor: pointer;
   &:first-child {
@@ -27,4 +26,7 @@
     }
   }
 
+  .accordion__body {
+    background-color: $grey;
+  }
 }

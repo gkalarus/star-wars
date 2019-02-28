@@ -5,11 +5,12 @@
   "dependencies": {
     "node-sass": "^4.11.0",
     "react": "^16.8.3",
+    "react-accessible-accordion": "^2.4.5",
     "react-accordion-with-header": "^0.1.2",
+    "react-collapsible": "^2.6.0",
     "react-dom": "^16.8.3",
     "react-scripts": "2.1.5",
-    "react-spinners": "^0.5.1",
-    "react-table": "^6.9.2"
+    "react-spinners": "^0.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
