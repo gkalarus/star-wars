@@ -23,6 +23,10 @@
           padding-right: 0;
         }
 
+        &:first-child {
+          color: $dark-blue;
+        }
+
         &:last-child {
           padding-right: 0;
         }
@@ -43,11 +47,21 @@
         display: none;
       }
       td {
+        &:first-child {
+          color: $dark-blue;
+        }
         text-align: center;
       }
     }
     
     tr.mobile {
+      &:nth-child(2) {
+        td {
+          &:last-child {
+            color: $dark-blue;
+          }
+        }
+      }
       @media (min-width: 800px) {
         display: none;
       }
@@ -56,6 +70,7 @@
         padding: 16px 10px;
      
       }
+      
     }
   }
 }

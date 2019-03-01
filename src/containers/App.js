@@ -12,13 +12,20 @@ class App extends Component {
 
   componentDidMount() {
     fetch('https://swapi.co/api/films/')
-    .then(response => response.json())
+    .then(response => {
+      if(!response.ok) {
+        throw Error (response.statusText)
+      } else {
+        response.json()
+      }
+    })
     .then(data => {
       this.setState({
         movies: [...data.results],
         loadingMovies: false
       })
     })
+    .catch(error => error)
   }
 
 

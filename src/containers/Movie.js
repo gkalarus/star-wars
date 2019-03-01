@@ -67,7 +67,13 @@ class Movie extends React.Component {
       const apisList = apis;
       apisList.forEach(api => {
         fetch(api)
-        .then(response => response.json())
+        .then(response => {
+          if(!response.ok) {
+            throw Error (response.statusText)
+          } else {
+            response.json()
+          }
+        })
         .then(data => {
           this.setState(prevState => {
             return {
@@ -75,6 +81,7 @@ class Movie extends React.Component {
             }
           })
         })
+        .catch(error => error)
       })
   }
 
