@@ -31,7 +31,6 @@ class Movie extends React.Component {
   handleCollapse = () => {
 
     if(!this.state.active) {
-      console.log('click1')
       this.setState(prevState => {
         return {
           active: !prevState.active
@@ -41,7 +40,6 @@ class Movie extends React.Component {
       this.handleFetchPlanet(this.state.movieDetails.planets);
       
     } else {
-      console.log('click2')
       this.setState(prevState => {
         return {
           active: !prevState.active,
@@ -68,11 +66,10 @@ class Movie extends React.Component {
       apisList.forEach(api => {
         fetch(api)
         .then(response => {
-          if(!response.ok) {
-            throw Error (response.statusText)
-          } else {
-            response.json()
+          if(response.ok) {
+           return response.json()
           }
+          throw Error(response.status)
         })
         .then(data => {
           this.setState(prevState => {
@@ -81,7 +78,7 @@ class Movie extends React.Component {
             }
           })
         })
-        .catch(error => error)
+        .catch(error => console.log(error))
       })
   }
 
