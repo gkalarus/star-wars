@@ -8,7 +8,9 @@
     "react-accessible-accordion": "^2.4.5",
     "react-accordion-with-header": "^0.1.2",
     "react-collapsible": "^2.6.0",
+    "react-device-detect": "^1.6.2",
     "react-dom": "^16.8.3",
+    "react-responsive": "^6.1.1",
     "react-scripts": "2.1.5",
     "react-spinners": "^0.5.1"
   },

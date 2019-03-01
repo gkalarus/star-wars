@@ -30,67 +30,55 @@ class Movie extends React.Component {
 
   handleCollapse = () => {
 
-    if(this.state.counter % 2 === 0) {
+    if(!this.state.active) {
+      console.log('click1')
       this.setState(prevState => {
         return {
-          counter: prevState.counter + 1,
-          active: true,
+          active: !prevState.active
         }
       })
 
-      if(!this.state.active) {
-        const planetDetails = this.handleFetchPlanet(this.state.movieDetails.planets);
-        this.setState({
-          planetDetails,
-          loadingPlanets: true
-        })
-  
-        setTimeout( () => {
-          this.setState( prevState => ({
-            loadingPlanets: false,
-          }));
-        }, 3000);
-      }
-
+      this.handleFetchPlanet(this.state.movieDetails.planets);
+      
     } else {
+      console.log('click2')
       this.setState(prevState => {
         return {
-          counter: prevState.counter + 1,
-          active: false
+          active: !prevState.active,
+          planetDetails: [],
+          loadingPlanets: true
         }
       })
+    }
+  }
 
-      if(this.state.active) {
-        const planetDetails = this.handleFetchPlanet(this.state.movieDetails.planets);
+  componentWillUpdate() {
+
+    if(this.state.active) {
+      if(this.state.movieDetails.planets.length === this.state.planetDetails.length + 1) {
         this.setState({
-          planetDetails,
-          loadingPlanets: true
+          loadingPlanets: false
         })
-  
-        setTimeout( () => {
-          this.setState( prevState => ({
-            loadingPlanets: false,
-          }));
-        }, 5000);
       }
     }
   }
 
   handleFetchPlanet = (apis) => {
       const apisList = apis;
-      let planetDetails = [];
       apisList.forEach(api => {
         fetch(api)
         .then(response => response.json())
         .then(data => {
-          planetDetails.push(data)
+          this.setState(prevState => {
+            return {
+              planetDetails: [...prevState.planetDetails, data]
+            }
+          })
         })
       })
-      return planetDetails
   }
 
   render() {
-    console.log(this.state.movieDetails)
 
     const headerStyle = {
       backgroundColor: '#fff',
