@@ -1,8 +1,11 @@
 import React from 'react';
+import AddForm from '../containers/AddForm';
 
 const AddBoard = () => {
   return (  
-    <div>Board</div>
+    <div className="addBoard">
+      <AddForm />
+    </div>
   );
 }
  

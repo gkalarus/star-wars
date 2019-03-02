@@ -1,0 +1,15 @@
+
+
+.boardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .addBoard {
+    min-height: 210px;
+    width: 100%;
+    width: 540px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}

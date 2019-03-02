@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Logo  from '../components/Logo';
 import MovieBoard from '../components/MovieBoard';
-import AddMovie from '../components/AddMovie';
+import AddMovie from '../containers/AddMovie';
 
 class App extends Component {
 
@@ -36,7 +36,7 @@ class App extends Component {
           movies={this.state.movies} 
           loadingMovies={this.state.loadingMovies}
         />
-        {/*<AddMovie />*/}
+        <AddMovie />
       </div>
     );
   }

@@ -106,22 +106,22 @@ class Movie extends React.Component {
     return(
       <li style={this.state.active ? activeMargin : null} className="movie">
         <Accordion style={headerStyle}>
-        <AccordionItem>
-            <AccordionItemTitle style={headerElem}>
-              <div className="headerContainer" onClick={this.handleCollapse}>
-                <p className="movieTitle">{this.props.movie.title}</p>
-                <img className="arrow" src={this.state.active ? arrowClose : arrowOpen } alt="open arrow"/>
-              </div>
-            </AccordionItemTitle>
-            <AccordionItemBody>
-              <PlanetBoard 
-                planetDetails={this.state.planetDetails}
-                loadingPlanets={this.state.loadingPlanets}
-                active={this.state.active}
-              />
-            </AccordionItemBody>
-        </AccordionItem>
-    </Accordion>
+          <AccordionItem>
+              <AccordionItemTitle style={headerElem}>
+                <div className="headerContainer" onClick={this.handleCollapse}>
+                  <p className="movieTitle">{this.props.movie.title}</p>
+                  <img className="arrow" src={this.state.active ? arrowClose : arrowOpen } alt="open arrow"/>
+                </div>
+              </AccordionItemTitle>
+              <AccordionItemBody>
+                <PlanetBoard 
+                  planetDetails={this.state.planetDetails}
+                  loadingPlanets={this.state.loadingPlanets}
+                  active={this.state.active}
+                />
+              </AccordionItemBody>
+          </AccordionItem>
+        </Accordion>
       </li>
     )
   }

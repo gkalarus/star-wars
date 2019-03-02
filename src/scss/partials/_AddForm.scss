@@ -1,0 +1,33 @@
+.addForm {
+  display: flex;
+  flex-basis: 100%;
+  min-height: 180px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  label {
+    font-size: 12px;
+  }
+  input {
+    align-self: stretch;
+    border: none;
+    border-bottom: 1px solid #999;
+    padding-bottom: 7px;
+    &::placeholder {
+      font-size: 16px;
+      color: $placeholder-color;
+    } 
+  }
+  button {
+    align-self: flex-end;
+    text-transform: uppercase;
+    background-color: $button-color;
+    border: none; 
+    width: 160px;
+    height: 33px;
+    border-radius: 4px;
+    color: $white;
+    font-weight: bold;
+    font-size: 12px;
+  }
+}

@@ -1,3 +1,42 @@
 .addMovie {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 16px;
+  border-radius: 4px;
+  max-width: 730px;
+  cursor: pointer;
+  @media (max-width: 800px) {
+    max-width: 302px;
+  }
+  .accordion__item {
+    width: 100%;
+    .accordion__body {
+      background-color: $grey;
+
+    }
+  }
   
+  .headerContainer {
+    display: flex;
+    height: 48px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+
+    .add {
+      padding-left: 15px;
+      font-weight: bold;
+      color: $dark-blue;
+
+      @media (max-width: 800px) {
+        padding-left: 10px;
+      }
+    }
+
+    .arrow {
+      padding-right: 16px;
+    }
+  }
 }
