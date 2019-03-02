@@ -1,10 +1,10 @@
 import React from 'react';
 import AddForm from '../containers/AddForm';
 
-const AddBoard = () => {
+const AddBoard = ({active}) => {
   return (  
     <div className="addBoard">
-      <AddForm />
+      <AddForm active={active} />
     </div>
   );
 }

@@ -56,7 +56,7 @@ class AddMovie extends React.Component {
               </div>
             </AccordionItemTitle>
             <AccordionItemBody className="boardContainer">
-              <AddBoard/>
+              <AddBoard active={this.state.active}/>
             </AccordionItemBody>
         </AccordionItem>
       </Accordion>
