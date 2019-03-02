@@ -1,5 +1,6 @@
 import React from 'react';
 import PlanetList from '../components/PlanetList';
+import SelectedPlanets from '../components/SelectedPlanets';
 
 
 class AddForm extends React.Component {
@@ -9,6 +10,7 @@ class AddForm extends React.Component {
     planetName: '',
     planets: [],
     selectedPlanets: [],
+    selectedPlanetsWithDetails: [],
     errors: {
       capitalLetter: false,
       movieTitleLength: false
@@ -20,18 +22,39 @@ class AddForm extends React.Component {
     movieTitleLength_incorrect: 'Movie title must be at least three letters long'
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if(prevProps.active !== this.props.active) {
       this.setState({
         movieTitle: '',
         planetName: '',
         planets: [],
         selectedPlanets: [],
+        selectedPlanetsWithDetails: [],
         errors: {
           capitalLetter: false,
           movieTitleLength: false
         }
       })
+    }
+
+    if(prevState.selectedPlanets !== this.state.selectedPlanets) {
+      if(this.state.selectedPlanets[this.state.selectedPlanets.length-1] !== undefined) {
+        fetch(`https://swapi.co/api/planets?search=${this.state.selectedPlanets[this.state.selectedPlanets.length-1]}`)
+        .then(response => {
+          if(response.ok) {
+            return response.json()
+          }
+          throw Error(response.status)
+        })
+        .then(data => {
+          this.setState(prevState => {
+            return {
+              selectedPlanetsWithDetails: [...prevState.selectedPlanetsWithDetails, data.results]
+            }
+          })
+        })
+        .catch(error => console.log(error))
+      }
     }
   }
 
@@ -118,16 +141,26 @@ class AddForm extends React.Component {
     })
   }
 
-  handlePlanetSelection = (planetName) => { 
-    this.setState(prevState => {
-      return {
-        selectedPlanets: [...prevState.selectedPlanets, planetName]
-      }
+  handlePlanetSelection = planetName => { 
+    if(this.state.selectedPlanets.indexOf(planetName) === -1) {
+      this.setState(prevState => {
+        return {
+          selectedPlanets: [...prevState.selectedPlanets, planetName]
+        }
+      })
+    }
+  }
+
+  handleDeletePlanet = (e, planetName) => {
+    e.preventDefault();
+    const selectedPlanets = this.state.selectedPlanets.filter(planet => planet !== planetName)
+    this.setState({
+      selectedPlanets
     })
   }
 
   render() {
-    console.log(this.state.planets)
+    console.log(this.state.selectedPlanetsWithDetails)
     let titleRed
 
     if(this.state.errors.capitalLetter || this.state.errors.movieTitleLength) {
@@ -143,10 +176,11 @@ class AddForm extends React.Component {
         <label style={titleRed} htmlFor="movieTitle">Movie title</label>
         <input type="text" id="movieTitle" name="movieTitle" placeholder="Please enter the title of the movie" value={this.state.movieTitle} onChange={this.handleAddMovieTitle}/>
         {(this.state.errors.capitalLetter || this.state.errors.movieTitleLength) && <span>{this.state.errors.capitalLetter && `${this.messages.capitalLetter_incorrect}. `} {this.state.errors.movieTitleLength && `${this.messages.movieTitleLength_incorrect}.`}</span>}
+        {this.state.selectedPlanets.length > 0 && <SelectedPlanets handleDeletePlanet={this.handleDeletePlanet} selectedPlanets={this.state.selectedPlanets}/>}
         <label htmlFor="addPlanet">Add Planet</label>
         <input type="text" id="addPlanet" name="addPlanet" placeholder="Search for the planet in database" value={this.state.planetName} onChange={this.handleSearch}/>
         {this.state.planets.length > 0 && <PlanetList handlePlanetSelection={this.handlePlanetSelection} planets={this.state.planets}/>}
-        <button>Add movie</button>
+        <button className="addBtn">Add movie</button>
       </form>
     )
   }

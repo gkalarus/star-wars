@@ -6,6 +6,7 @@ import TableRow from '../components/TableRow';
 const PlanetTable = ({planetDetails, loadingPlanets, active}) => {
   let planetList 
   if(planetDetails !== null) {
+    console.log(planetDetails)
     planetList = planetDetails.map((planet, index) => <TableRow key={index} data={planet} />)
   }
 

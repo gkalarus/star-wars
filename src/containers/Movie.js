@@ -19,7 +19,6 @@ class Movie extends React.Component {
     loadingPlanets: true,
     movieDetails: null,
     planetDetails: [],
-    counter: 0
   }
 
   componentDidMount() {
