@@ -28,6 +28,17 @@ class Movie extends React.Component {
     })
   }
 
+  componentWillUpdate() {
+
+    if(this.state.active) {
+      if(this.state.movieDetails.planets.length === this.state.planetDetails.length + 1) {
+        this.setState({
+          loadingPlanets: false
+        })
+      }
+    }
+  }
+
   handleCollapse = () => {
 
     if(!this.state.active) {
@@ -47,17 +58,6 @@ class Movie extends React.Component {
           loadingPlanets: true
         }
       })
-    }
-  }
-
-  componentWillUpdate() {
-
-    if(this.state.active) {
-      if(this.state.movieDetails.planets.length === this.state.planetDetails.length + 1) {
-        this.setState({
-          loadingPlanets: false
-        })
-      }
     }
   }
 

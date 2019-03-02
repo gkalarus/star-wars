@@ -16,7 +16,16 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 class AddMovie extends React.Component {
 
   state = {
-    active: false
+    active: false,
+  }
+
+
+  handleCollapse = () => {
+    this.setState(prevState => {
+      return {
+        active: !prevState.active
+      }
+    })
   }
 
   render() {
@@ -41,13 +50,13 @@ class AddMovie extends React.Component {
       <Accordion style={headerStyle} className="addMovie">
         <AccordionItem>
             <AccordionItemTitle style={headerElem}>
-              <div className="headerContainer">
+              <div className="headerContainer" onClick={this.handleCollapse}>
                 <p className="add">Add Movie</p>
                 <img className="arrow" src={this.state.active ? arrowClose : arrowOpen } alt="open arrow"/>
               </div>
             </AccordionItemTitle>
             <AccordionItemBody className="boardContainer">
-              <AddBoard />
+              <AddBoard/>
             </AccordionItemBody>
         </AccordionItem>
       </Accordion>
