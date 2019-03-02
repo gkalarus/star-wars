@@ -38,7 +38,7 @@ class AddForm extends React.Component {
     }
 
     if(prevState.selectedPlanets !== this.state.selectedPlanets) {
-      if(this.state.selectedPlanets[this.state.selectedPlanets.length-1] !== undefined) {
+      if(this.state.selectedPlanets[this.state.selectedPlanets.length-1] !== undefined && this.state.selectedPlanets.length > prevState.selectedPlanets.length) {
         fetch(`https://swapi.co/api/planets?search=${this.state.selectedPlanets[this.state.selectedPlanets.length-1]}`)
         .then(response => {
           if(response.ok) {
@@ -154,8 +154,10 @@ class AddForm extends React.Component {
   handleDeletePlanet = (e, planetName) => {
     e.preventDefault();
     const selectedPlanets = this.state.selectedPlanets.filter(planet => planet !== planetName)
+    const selectedPlanetsWithDetails = this.state.selectedPlanetsWithDetails.filter(planet => planet[0].name !== planetName)
     this.setState({
-      selectedPlanets
+      selectedPlanets,
+      selectedPlanetsWithDetails
     })
   }
 
