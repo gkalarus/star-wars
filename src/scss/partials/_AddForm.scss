@@ -5,6 +5,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+
+  @media (max-width: 800px) {
+   padding: 10px;
+  }
   label {
     font-size: 12px;
   }

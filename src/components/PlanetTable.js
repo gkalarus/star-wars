@@ -3,11 +3,17 @@ import { ClipLoader } from 'react-spinners';
 import TableRow from '../components/TableRow';
 
 
-const PlanetTable = ({planetDetails, loadingPlanets, active}) => {
+const PlanetTable = ({planetDetails, loadingPlanets, active, addedMovieDetails}) => {
   let planetList 
-  if(planetDetails !== null) {
+  let addedPlanetList
+
+  if(planetDetails.length > 0) {
     console.log(planetDetails)
     planetList = planetDetails.map((planet, index) => <TableRow key={index} data={planet} />)
+  }
+
+  if(addedMovieDetails[0] !== undefined) {
+    addedPlanetList = addedMovieDetails[0].planets.map((planet, index) => <TableRow key={index} data={planet} />)
   }
 
 
@@ -24,7 +30,9 @@ const PlanetTable = ({planetDetails, loadingPlanets, active}) => {
           <th><span>Population</span><span></span></th>
         </tr>
       </thead>
-          {loadingPlanets && active ?  <tbody><tr className="planetLoader"><td colSpan={7}><ClipLoader sizeUnit={"px"} size={50} color={'#1BA1BE'} loading={loadingPlanets} /></td></tr></tbody> :  planetList }
+          {(loadingPlanets && active && addedMovieDetails[0] === undefined) &&  <tbody><tr className="planetLoader"><td colSpan={7}><ClipLoader sizeUnit={"px"} size={50} color={'#1BA1BE'} loading={loadingPlanets} /></td></tr></tbody>}
+          {!loadingPlanets && planetList}
+          {addedMovieDetails[0] !== undefined && addedPlanetList}
     </table>
   )
 }

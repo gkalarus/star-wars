@@ -19,17 +19,19 @@ class Movie extends React.Component {
     loadingPlanets: true,
     movieDetails: null,
     planetDetails: [],
+    addedMovieDetails: []
   }
 
   componentDidMount() {
     this.setState({
-      movieDetails: this.props.movie
+      movieDetails: this.props.movie,
+      addedMovieDetails: [...this.state.addedMovieDetails, this.props.addedMovieDetails]
     })
   }
 
   componentWillUpdate() {
 
-    if(this.state.active) {
+    if(this.state.active && this.state.movieDetails) {
       if(this.state.movieDetails.planets.length === this.state.planetDetails.length + 1) {
         this.setState({
           loadingPlanets: false
@@ -47,14 +49,17 @@ class Movie extends React.Component {
         }
       })
 
-      this.handleFetchPlanet(this.state.movieDetails.planets);
+      if(this.state.movieDetails !==  undefined) {
+        this.handleFetchPlanet(this.state.movieDetails.planets);
+      }
       
     } else {
       this.setState(prevState => {
         return {
           active: !prevState.active,
           planetDetails: [],
-          loadingPlanets: true
+          loadingPlanets: true,
+          addedPlanetsDetails: []
         }
       })
     }
@@ -82,6 +87,8 @@ class Movie extends React.Component {
   }
 
   render() {
+    console.log(this.props.addedMovieDetails)
+
 
     const headerStyle = {
       backgroundColor: '#fff',
@@ -108,13 +115,14 @@ class Movie extends React.Component {
           <AccordionItem>
               <AccordionItemTitle style={headerElem}>
                 <div className="headerContainer" onClick={this.handleCollapse}>
-                  <p className="movieTitle">{this.props.movie.title}</p>
+                  <p className="movieTitle">{this.props.movie && this.props.movie.title} {this.props.addedMovieDetails !==undefined && this.props.addedMovieDetails.movieTitle}</p>
                   <img className="arrow" src={this.state.active ? arrowClose : arrowOpen } alt="open arrow"/>
                 </div>
               </AccordionItemTitle>
               <AccordionItemBody>
                 <PlanetBoard 
                   planetDetails={this.state.planetDetails}
+                  addedMovieDetails={this.state.addedMovieDetails}
                   loadingPlanets={this.state.loadingPlanets}
                   active={this.state.active}
                 />

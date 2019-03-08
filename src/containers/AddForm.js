@@ -98,8 +98,13 @@ class AddForm extends React.Component {
     const validation = this.formValidation();
     
     if(validation.correct) {
+      this.props.handleAddMovie(this.state.selectedPlanetsWithDetails, this.state.movieTitle)
       this.setState({
         movieTitle: '',
+        planetName: '',
+        planets: [],
+        selectedPlanets: [],
+        selectedPlanetsWithDetails: [],
         errors: {
           capitalLetter: false,
           movieTitleLength: false
