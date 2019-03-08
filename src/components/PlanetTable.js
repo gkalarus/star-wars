@@ -8,7 +8,6 @@ const PlanetTable = ({planetDetails, loadingPlanets, active, addedMovieDetails})
   let addedPlanetList
 
   if(planetDetails.length > 0) {
-    console.log(planetDetails)
     planetList = planetDetails.map((planet, index) => <TableRow key={index} data={planet} />)
   }
 

@@ -55,7 +55,7 @@ class AddMovie extends React.Component {
                 <img className="arrow" src={this.state.active ? arrowClose : arrowOpen } alt="open arrow"/>
               </div>
             </AccordionItemTitle>
-            <AccordionItemBody className="boardContainer">
+            <AccordionItemBody className={this.state.active ? 'boardContainer' : ''}>
               <AddBoard 
                 active={this.state.active}
                 handleAddMovie={this.props.handleAddMovie}

@@ -30,7 +30,6 @@ class App extends Component {
   }
 
   handleAddMovie = (selectedPlanetsWithDetails, movieTitle) => {
-    console.log(selectedPlanetsWithDetails, movieTitle)
     let planets = selectedPlanetsWithDetails;
     let movie = {}
     movie.movieTitle = movieTitle;
@@ -42,7 +41,6 @@ class App extends Component {
 
 
   render() {
-    console.log('add')
     return (
       <div className="app">
         <Logo />

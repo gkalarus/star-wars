@@ -167,7 +167,6 @@ class AddForm extends React.Component {
   }
 
   render() {
-    console.log(this.state.selectedPlanetsWithDetails)
     let titleRed
 
     if(this.state.errors.capitalLetter || this.state.errors.movieTitleLength) {

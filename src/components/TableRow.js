@@ -1,7 +1,6 @@
 import React from 'react';
 
 const TableRow = ({data}) => {
-  console.log(data)
   return (  
     <tbody>
     <tr className="desktop">

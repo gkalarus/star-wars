@@ -87,8 +87,6 @@ class Movie extends React.Component {
   }
 
   render() {
-    console.log(this.props.addedMovieDetails)
-
 
     const headerStyle = {
       backgroundColor: '#fff',
