@@ -1,5 +1,5 @@
 import React from 'react';
-import PlanetTable from '../components/PlanetTable';
+import PlanetTable from '../containers/PlanetTable';
 
 
 const PlanetBoard = ({planetDetails, loadingPlanets, active, addedMovieDetails}) => {
