@@ -9,6 +9,9 @@ class PlanetTable extends React.Component {
     addedPlanetList: [],
     planetName: {
       direction: 'asc'
+    },
+    rotationPeriod: {
+      direction: 'asc'
     }
   }
 
@@ -41,11 +44,12 @@ class PlanetTable extends React.Component {
   handleSort = (column) => (e) => {
     if(this.state.planetList.length > 0) {
       if(column === 'planetName') {
-        console.log(this.state.planetList)
-        let planetNames = this.state.planetList.map(name => {
+        let sortedPlanetList = [];
+        let convertedPlanetList = [];
+        let planetNames = this.state.planetList.map(planet => {
           return {
-            planetName: name.props.data.name,
-            key: name.key
+            planetName: planet.props.data.name,
+            key: planet.key
           }
         })
 
@@ -60,9 +64,6 @@ class PlanetTable extends React.Component {
             }
             return 0
           })
-  
-          let sortedPlanetList = [];
-          let convertedPlanetList = [];
   
           planetNames.forEach(planet => {
             sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
@@ -87,9 +88,6 @@ class PlanetTable extends React.Component {
             return 0
           })
   
-          let sortedPlanetList = [];
-          let convertedPlanetList = [];
-  
           planetNames.forEach(planet => {
             sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
           })
@@ -104,22 +102,76 @@ class PlanetTable extends React.Component {
           })
         }
 
+      } else if (column === 'rotationPeriod') {
+        let sortedPlanetList = [];
+        let convertedPlanetList = [];
+        let rotationPeriods = this.state.planetList.map(planet => {
+          return {
+            rotationPeriod: planet.props.data.rotation_period,
+            key: planet.key
+          }
+        })
+
+        if(this.state.rotationPeriod.direction === 'asc') {
+    
+          rotationPeriods.sort((a, b) => {
+            if(a.rotationPeriod < b.rotationPeriod) {
+              return -1;
+            }
+            if(a.rotationPeriod > b.rotationPeriod) {
+              return 1;
+            }
+            return 0
+          })
+  
+          rotationPeriods.forEach(planet => {
+            sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
+          })
+  
+          sortedPlanetList.forEach(planet => convertedPlanetList.push(planet[0]))
+          
+          this.setState({
+            planetList: convertedPlanetList,
+            rotationPeriod: {
+              direction: 'desc'
+            }
+          })
+        } else {
+          rotationPeriods.sort((a, b) => {
+            if(b.rotationPeriod < a.rotationPeriod) {
+              return -1;
+            }
+            if(b.rotationPeriod > a.rotationPeriod) {
+              return 1;
+            }
+            return 0
+          })
+  
+          rotationPeriods.forEach(planet => {
+            sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
+          })
+  
+          sortedPlanetList.forEach(planet => convertedPlanetList.push(planet[0]))
+          
+          this.setState({
+            planetList: convertedPlanetList,
+            rotationPeriod: {
+              direction: 'asc'
+            }
+          })
+        }
       }
     }
   };
 
   render() {
 
-    console.log(this.state.addedPlanetList, this.state.planetList)
-    
-
-
     return(
       <table className="planetTable">
         <thead>
           <tr>
             <th onClick={this.handleSort('planetName')}><span>Planet Name</span> <span></span></th>
-            <th><span>Rotation period</span><span></span></th>
+            <th onClick={this.handleSort('rotationPeriod')}><span>Rotation period</span><span></span></th>
             <th><span>Orbital period</span><span></span></th>
             <th><span>Diameter</span><span></span></th>
             <th><span>Climate</span><span></span></th>
