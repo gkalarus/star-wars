@@ -18,6 +18,9 @@ class PlanetTable extends React.Component {
     },
     diameter: {
       direction: 'asc'
+    },
+    climate: {
+      direction: 'asc'
     }
   }
 
@@ -234,6 +237,64 @@ class PlanetTable extends React.Component {
             }
           })
         }
+      } else if (column === 'climate') {
+        let sortedPlanetList = [];
+        let convertedPlanetList = [];
+        let climates = this.state.planetList.map(planet => {
+          return {
+            climate: planet.props.data.climate,
+            key: planet.key
+          }
+        })
+
+        if(this.state.climate.direction === 'asc') {
+    
+          climates.sort((a, b) => {
+            if(a.climate < b.climate) {
+              return -1;
+            }
+            if(a.climate > b.climate) {
+              return 1;
+            }
+            return 0
+          })
+  
+          climates.forEach(planet => {
+            sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
+          })
+  
+          sortedPlanetList.forEach(planet => convertedPlanetList.push(planet[0]))
+          
+          this.setState({
+            planetList: convertedPlanetList,
+            climate: {
+              direction: 'desc'
+            }
+          })
+        } else {
+          climates.sort((a, b) => {
+            if(b.climate < a.climate) {
+              return -1;
+            }
+            if(b.climate > a.climate) {
+              return 1;
+            }
+            return 0
+          })
+  
+          climates.forEach(planet => {
+            sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
+          })
+  
+          sortedPlanetList.forEach(planet => convertedPlanetList.push(planet[0]))
+          
+          this.setState({
+            planetList: convertedPlanetList,
+            climate: {
+              direction: 'asc'
+            }
+          })
+        }
       }
     }
   };
@@ -248,7 +309,7 @@ class PlanetTable extends React.Component {
             <th onClick={this.handleSort('rotationPeriod')}><span>Rotation period</span><span></span></th>
             <th onClick={this.handleSort('orbitalPeriod')}><span>Orbital period</span><span></span></th>
             <th onClick={this.handleSort('diameter')}><span>Diameter</span><span></span></th>
-            <th><span>Climate</span><span></span></th>
+            <th onClick={this.handleSort('climate')}><span>Climate</span><span></span></th>
             <th><span>Surface water</span><span></span></th>
             <th><span>Population</span><span></span></th>
           </tr>
