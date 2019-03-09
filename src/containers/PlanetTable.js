@@ -12,6 +12,12 @@ class PlanetTable extends React.Component {
     },
     rotationPeriod: {
       direction: 'asc'
+    },
+    orbitalPeriod: {
+      direction: 'asc'
+    },
+    diameter: {
+      direction: 'asc'
     }
   }
 
@@ -114,15 +120,7 @@ class PlanetTable extends React.Component {
 
         if(this.state.rotationPeriod.direction === 'asc') {
     
-          rotationPeriods.sort((a, b) => {
-            if(a.rotationPeriod < b.rotationPeriod) {
-              return -1;
-            }
-            if(a.rotationPeriod > b.rotationPeriod) {
-              return 1;
-            }
-            return 0
-          })
+          rotationPeriods.sort((a, b) => a.rotationPeriod - b.rotationPeriod)
   
           rotationPeriods.forEach(planet => {
             sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
@@ -137,15 +135,7 @@ class PlanetTable extends React.Component {
             }
           })
         } else {
-          rotationPeriods.sort((a, b) => {
-            if(b.rotationPeriod < a.rotationPeriod) {
-              return -1;
-            }
-            if(b.rotationPeriod > a.rotationPeriod) {
-              return 1;
-            }
-            return 0
-          })
+          rotationPeriods.sort((a, b) => b.rotationPeriod - a.rotationPeriod)
   
           rotationPeriods.forEach(planet => {
             sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
@@ -156,6 +146,90 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             rotationPeriod: {
+              direction: 'asc'
+            }
+          })
+        }
+      } else if (column === 'orbitalPeriod') {
+        let sortedPlanetList = [];
+        let convertedPlanetList = [];
+        let orbitalPeriods = this.state.planetList.map(planet => {
+          return {
+            orbitalPeriod: planet.props.data.orbital_period,
+            key: planet.key
+          }
+        })
+
+        if(this.state.orbitalPeriod.direction === 'asc') {
+    
+          orbitalPeriods.sort((a, b) => a.orbitalPeriod - b.orbitalPeriod)
+  
+          orbitalPeriods.forEach(planet => {
+            sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
+          })
+  
+          sortedPlanetList.forEach(planet => convertedPlanetList.push(planet[0]))
+          
+          this.setState({
+            planetList: convertedPlanetList,
+            orbitalPeriod: {
+              direction: 'desc'
+            }
+          })
+        } else {
+          orbitalPeriods.sort((a, b) => b.orbitalPeriod - a.orbitalPeriod)
+  
+          orbitalPeriods.forEach(planet => {
+            sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
+          })
+  
+          sortedPlanetList.forEach(planet => convertedPlanetList.push(planet[0]))
+          
+          this.setState({
+            planetList: convertedPlanetList,
+            orbitalPeriod: {
+              direction: 'asc'
+            }
+          })
+        }
+      } else if (column === 'diameter') {
+        let sortedPlanetList = [];
+        let convertedPlanetList = [];
+        let diameters = this.state.planetList.map(planet => {
+          return {
+            diameter: planet.props.data.diameter,
+            key: planet.key
+          }
+        })
+
+        if(this.state.diameter.direction === 'asc') {
+    
+          diameters.sort((a, b) => a.diameter - b.diameter)
+  
+          diameters.forEach(planet => {
+            sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
+          })
+  
+          sortedPlanetList.forEach(planet => convertedPlanetList.push(planet[0]))
+          
+          this.setState({
+            planetList: convertedPlanetList,
+            diameter: {
+              direction: 'desc'
+            }
+          })
+        } else {
+          diameters.sort((a, b) => b.diameter - a.diameter)
+  
+          diameters.forEach(planet => {
+            sortedPlanetList.push(this.state.planetList.filter(unsortedPlanet => unsortedPlanet.key === planet.key))
+          })
+  
+          sortedPlanetList.forEach(planet => convertedPlanetList.push(planet[0]))
+          
+          this.setState({
+            planetList: convertedPlanetList,
+            diameter: {
               direction: 'asc'
             }
           })
@@ -172,8 +246,8 @@ class PlanetTable extends React.Component {
           <tr>
             <th onClick={this.handleSort('planetName')}><span>Planet Name</span> <span></span></th>
             <th onClick={this.handleSort('rotationPeriod')}><span>Rotation period</span><span></span></th>
-            <th><span>Orbital period</span><span></span></th>
-            <th><span>Diameter</span><span></span></th>
+            <th onClick={this.handleSort('orbitalPeriod')}><span>Orbital period</span><span></span></th>
+            <th onClick={this.handleSort('diameter')}><span>Diameter</span><span></span></th>
             <th><span>Climate</span><span></span></th>
             <th><span>Surface water</span><span></span></th>
             <th><span>Population</span><span></span></th>
