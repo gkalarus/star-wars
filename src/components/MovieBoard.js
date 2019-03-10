@@ -1,8 +1,9 @@
 import React from 'react';
 import Movie from '../containers/Movie';
 import { ClipLoader } from 'react-spinners';
+import uuid from "uuid";
 
-const MovieBoard = ({movies, loadingMovies, addedMovies}) => {
+const MovieBoard = ({movies, loadingMovies}) => {
 
   let movieList
   let movieBoardStyles = {
@@ -13,12 +14,8 @@ const MovieBoard = ({movies, loadingMovies, addedMovies}) => {
 
   if(movies !== null) {
     movieList = movies.map(movie => (
-      <Movie key={movie.episode_id} movie={movie} />
+      <Movie key={uuid.v4()} movie={movie} />
     ))
-  }
-
-  if(addedMovies.length > 0) {
-    movieBoardStyles = null
   }
 
   return (  

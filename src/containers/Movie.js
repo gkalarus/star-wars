@@ -19,13 +19,11 @@ class Movie extends React.Component {
     loadingPlanets: true,
     movieDetails: null,
     planetDetails: [],
-    addedMovieDetails: []
   }
 
   componentDidMount() {
     this.setState({
-      movieDetails: this.props.movie,
-      addedMovieDetails: [...this.state.addedMovieDetails, this.props.addedMovieDetails]
+      movieDetails: this.props.movie
     })
   }
 
@@ -59,7 +57,6 @@ class Movie extends React.Component {
           active: !prevState.active,
           planetDetails: [],
           loadingPlanets: true,
-          addedPlanetsDetails: []
         }
       })
     }
@@ -113,14 +110,13 @@ class Movie extends React.Component {
           <AccordionItem>
               <AccordionItemTitle style={headerElem}>
                 <div className="headerContainer" onClick={this.handleCollapse}>
-                  <p className="movieTitle">{this.props.movie && this.props.movie.title} {this.props.addedMovieDetails !==undefined && this.props.addedMovieDetails.movieTitle}</p>
+                  <p className="movieTitle">{this.props.movie && this.props.movie.title}</p>
                   <img className="arrow" src={this.state.active ? arrowClose : arrowOpen } alt="open arrow"/>
                 </div>
               </AccordionItemTitle>
               <AccordionItemBody>
                 <PlanetBoard 
                   planetDetails={this.state.planetDetails}
-                  addedMovieDetails={this.state.addedMovieDetails}
                   loadingPlanets={this.state.loadingPlanets}
                   active={this.state.active}
                 />
