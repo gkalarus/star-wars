@@ -35,6 +35,16 @@
           padding-right: 0;
         }
 
+        .headerBox {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          .sortIcon {
+            font-size: 10px;
+            color: $dark-primary;
+            cursor: pointer;
+          }
+        }
       }
     }
   }
