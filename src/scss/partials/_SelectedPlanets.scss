@@ -2,6 +2,7 @@
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
+
   li {
     border: 1px solid #999999;
     padding: 6px 16px;
@@ -9,6 +10,7 @@
     margin-right: 10px;
     margin-top: 16px;
     margin-bottom: 16px;
+
     button {
       background-color: $white;
       border: none;

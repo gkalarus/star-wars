@@ -7,15 +7,18 @@
   align-items: flex-start;
 
   @media (max-width: 800px) {
-   padding: 10px;
+    padding: 10px;
   }
+
   label {
     font-size: 12px;
     margin-bottom: 5px;
+
     &:first-of-type {
       margin-top: 30px;
     }
   }
+
   input {
     align-self: stretch;
     border: none;
@@ -25,13 +28,14 @@
     font-size: 16px;
     color: $dark-primary;
     margin-bottom: 17px;
+
     &::placeholder {
       font-size: 16px;
       color: $placeholder-color;
-    } 
+    }
   }
 
-  span{
+  span {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -44,11 +48,12 @@
     padding-left: 9px;
     margin-bottom: 10px;
   }
+
   .addBtn {
     align-self: flex-end;
     text-transform: uppercase;
     background-color: $button-color;
-    border: none; 
+    border: none;
     width: 160px;
     height: 33px;
     border-radius: 4px;
