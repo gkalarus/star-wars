@@ -10,7 +10,6 @@
   background-color: $white;
   padding: 0;
   user-select: none;
-  cursor: pointer;
 
   @media (max-width: 800px) {
     max-width: 302px;
@@ -31,6 +30,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
+    cursor: pointer;
 
     .add {
       padding-left: 15px;

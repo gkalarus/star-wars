@@ -6,7 +6,6 @@
   min-height: 48px;
   margin-top: 16px;
   border-radius: 4px;
-  cursor: pointer;
 
   .acc {
     background-color: $white;
@@ -29,7 +28,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
-
+    cursor: pointer;
     .movieTitle {
       padding-left: 15px;
       font-weight: bold;
