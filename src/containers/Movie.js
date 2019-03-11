@@ -85,30 +85,11 @@ class Movie extends React.Component {
 
   render() {
 
-    const headerStyle = {
-      backgroundColor: '#fff',
-      minHeight: '48px',
-      padding: '0',
-      width: '100%',
-      userSelect: 'none'
-    }
-  
-    const headerElem = {
-      minHeight: '48px',
-      padding: '0'
-    }
-    
-    const activeMargin = {
-      marginBottom: '16px',
-    }
-
-  
-
     return(
-      <li style={this.state.active ? activeMargin : null} className="movie">
-        <Accordion style={headerStyle}>
+      <li className="movie">
+        <Accordion className="acc">
           <AccordionItem>
-              <AccordionItemTitle style={headerElem}>
+              <AccordionItemTitle className="accItemTitle">
                 <div className="headerContainer" onClick={this.handleCollapse}>
                   <p className="movieTitle">{this.props.movie && this.props.movie.title}</p>
                   <img className="arrow" src={this.state.active ? arrowClose : arrowOpen } alt="open arrow"/>

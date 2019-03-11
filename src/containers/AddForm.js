@@ -6,8 +6,8 @@ import SelectedPlanets from '../components/SelectedPlanets';
 class AddForm extends React.Component {
 
   state = {
-    movieTitle: '',
-    planetName: '',
+    movieTitle: "",
+    planetName: "",
     planets: [],
     selectedPlanets: [],
     selectedPlanetsWithDetails: [],
@@ -19,16 +19,16 @@ class AddForm extends React.Component {
   }
 
   messages = {
-    capitalLetter_incorrect: 'Movie title must start with a capital letter',
-    movieTitleLength_incorrect: 'Movie title must be at least three letters long',
-    selectedPlanets_incorrect: 'Please add at least one planet'
+    capitalLetter_incorrect: "Movie title must start with a capital letter",
+    movieTitleLength_incorrect: "Movie title must be at least three letters long",
+    selectedPlanets_incorrect: "Please add at least one planet"
   }
 
   componentDidUpdate(prevProps, prevState) {
     if(prevProps.active !== this.props.active) {
       this.setState({
-        movieTitle: '',
-        planetName: '',
+        movieTitle: "",
+        planetName: "",
         planets: [],
         selectedPlanets: [],
         selectedPlanetsWithDetails: [],
@@ -108,8 +108,8 @@ class AddForm extends React.Component {
     if(validation.correct) {
       this.props.handleAddMovie(this.state.selectedPlanetsWithDetails, this.state.movieTitle)
       this.setState({
-        movieTitle: '',
-        planetName: '',
+        movieTitle: "",
+        planetName: "",
         planets: [],
         selectedPlanets: [],
         selectedPlanetsWithDetails: [],
@@ -183,13 +183,13 @@ class AddForm extends React.Component {
 
     if(this.state.errors.capitalLetter || this.state.errors.movieTitleLength) {
       movieTitleRed = {
-        color: 'red'
+        color: "red"
       }
     }
 
     if(this.state.errors.selectedPlanets) {
       addPlanetRed = {
-        color: 'red'
+        color: "red"
       }
     }
     

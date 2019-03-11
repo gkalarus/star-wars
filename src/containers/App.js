@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://swapi.co/api/films/')
+    fetch("https://swapi.co/api/films/")
     .then(response => {
       if(response.ok) {
         return response.json()

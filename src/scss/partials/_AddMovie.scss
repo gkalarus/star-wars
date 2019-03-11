@@ -3,14 +3,19 @@
   align-items: center;
   width: 100%;
   min-height: 48px;
-  margin-top: 16px;
+  margin-top: 32px;
   margin-bottom: 30px;
   border-radius: 4px;
   max-width: 750px;
-  // cursor: pointer;
+  background-color: $white;
+  padding: 0;
+  user-select: none;
+  cursor: pointer;
+
   @media (max-width: 800px) {
     max-width: 302px;
   }
+
   .accordion__item {
     width: 100%;
     .accordion__body {

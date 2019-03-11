@@ -7,25 +7,25 @@ class PlanetTable extends React.Component {
   state = {
     planetList: [],
     planetName: {
-      direction: 'asc'
+      direction: "asc"
     },
     rotationPeriod: {
-      direction: 'asc'
+      direction: "asc"
     },
     orbitalPeriod: {
-      direction: 'asc'
+      direction: "asc"
     },
     diameter: {
-      direction: 'asc'
+      direction: "asc"
     },
     climate: {
-      direction: 'asc'
+      direction: "asc"
     },
     surfaceWater: {
-      direction: 'asc'
+      direction: "asc"
     },
     population: {
-      direction: 'asc'
+      direction: "asc"
     },
   }
 
@@ -44,7 +44,7 @@ class PlanetTable extends React.Component {
 
   handleSort = (column) => (e) => {
     if(this.state.planetList.length > 0) {
-      if(column === 'planetName') {
+      if(column === "planetName") {
         let sortedPlanetList = [];
         let convertedPlanetList = [];
         let planetNames = this.state.planetList.map(planet => {
@@ -54,7 +54,7 @@ class PlanetTable extends React.Component {
           }
         })
 
-        if(this.state.planetName.direction === 'asc') {
+        if(this.state.planetName.direction === "asc") {
     
           planetNames.sort((a, b) => {
             if(a.planetName < b.planetName) {
@@ -75,7 +75,7 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             planetName: {
-              direction: 'desc'
+              direction: "desc"
             }
           })
         } else {
@@ -98,11 +98,11 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             planetName: {
-              direction: 'asc'
+              direction: "asc"
             }
           })
         }
-      } else if (column === 'rotationPeriod') {
+      } else if (column === "rotationPeriod") {
         let strArr = [];
         let numArr = [];
         let sortedPlanetList = [];
@@ -114,7 +114,7 @@ class PlanetTable extends React.Component {
           }
         })
 
-        if(this.state.rotationPeriod.direction === 'asc') {
+        if(this.state.rotationPeriod.direction === "asc") {
           rotationPeriods.forEach(item => isNaN(item.rotationPeriod) ? strArr.push(item) : numArr.push(item))
 
           numArr.sort((a, b) => a.rotationPeriod - b.rotationPeriod)
@@ -128,7 +128,7 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             rotationPeriod: {
-              direction: 'desc'
+              direction: "desc"
             }
           })
 
@@ -146,11 +146,11 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             rotationPeriod: {
-              direction: 'asc'
+              direction: "asc"
             }
           })
         }
-      } else if (column === 'orbitalPeriod') {
+      } else if (column === "orbitalPeriod") {
         let strArr = [];
         let numArr = [];
         let sortedPlanetList = [];
@@ -162,7 +162,7 @@ class PlanetTable extends React.Component {
           }
         })
 
-        if(this.state.orbitalPeriod.direction === 'asc') {
+        if(this.state.orbitalPeriod.direction === "asc") {
           orbitalPeriods.forEach(item => isNaN(item.orbitalPeriod) ? strArr.push(item) : numArr.push(item))
 
           numArr.sort((a, b) => a.orbitalPeriod - b.orbitalPeriod)
@@ -176,7 +176,7 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             orbitalPeriod: {
-              direction: 'desc'
+              direction: "desc"
             }
           })
 
@@ -194,11 +194,11 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             orbitalPeriod: {
-              direction: 'asc'
+              direction: "asc"
             }
           })
         }
-      } else if (column === 'diameter') {
+      } else if (column === "diameter") {
         let strArr = [];
         let numArr = [];
         let sortedPlanetList = [];
@@ -210,7 +210,7 @@ class PlanetTable extends React.Component {
           }
         })
 
-        if(this.state.diameter.direction === 'asc') {
+        if(this.state.diameter.direction === "asc") {
           diameters.forEach(item => isNaN(item.diameter) ? strArr.push(item) : numArr.push(item))
 
           numArr.sort((a, b) => a.diameter - b.diameter)
@@ -224,7 +224,7 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             diameter: {
-              direction: 'desc'
+              direction: "desc"
             }
           })
 
@@ -242,11 +242,11 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             diameter: {
-              direction: 'asc'
+              direction: "asc"
             }
           })
         }
-      } else if (column === 'climate') {
+      } else if (column === "climate") {
         let sortedPlanetList = [];
         let convertedPlanetList = [];
         let climates = this.state.planetList.map(planet => {
@@ -256,7 +256,7 @@ class PlanetTable extends React.Component {
           }
         })
 
-        if(this.state.climate.direction === 'asc') {
+        if(this.state.climate.direction === "asc") {
     
           climates.sort((a, b) => {
             if(a.climate < b.climate) {
@@ -277,7 +277,7 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             climate: {
-              direction: 'desc'
+              direction: "desc"
             }
           })
         } else {
@@ -300,11 +300,11 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             climate: {
-              direction: 'asc'
+              direction: "asc"
             }
           })
         }
-      } else if (column === 'surfaceWater') {
+      } else if (column === "surfaceWater") {
         let strArr = [];
         let numArr = [];
         let sortedPlanetList = [];
@@ -316,7 +316,7 @@ class PlanetTable extends React.Component {
           }
         })
 
-        if(this.state.surfaceWater.direction === 'asc') {
+        if(this.state.surfaceWater.direction === "asc") {
           surfaceWaters.forEach(item => isNaN(item.surfaceWater) ? strArr.push(item) : numArr.push(item))
 
           numArr.sort((a, b) => a.surfaceWater - b.surfaceWater)
@@ -330,7 +330,7 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             surfaceWater: {
-              direction: 'desc'
+              direction: "desc"
             }
           })
 
@@ -348,11 +348,11 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             surfaceWater: {
-              direction: 'asc'
+              direction: "asc"
             }
           })
         }
-      } else if (column === 'population') {
+      } else if (column === "population") {
         let strArr = [];
         let numArr = [];
         let sortedPlanetList = [];
@@ -364,7 +364,7 @@ class PlanetTable extends React.Component {
           }
         })
 
-        if(this.state.population.direction === 'asc') {
+        if(this.state.population.direction === "asc") {
           populations.forEach(item => isNaN(item.population) ? strArr.push(item) : numArr.push(item))
 
           numArr.sort((a, b) => a.population - b.population)
@@ -378,7 +378,7 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             population: {
-              direction: 'desc'
+              direction: "desc"
             }
           })
 
@@ -396,7 +396,7 @@ class PlanetTable extends React.Component {
           this.setState({
             planetList: convertedPlanetList,
             population: {
-              direction: 'asc'
+              direction: "asc"
             }
           })
         }
@@ -410,16 +410,16 @@ class PlanetTable extends React.Component {
       <table className="planetTable">
         <thead>
           <tr>
-            <th><div className="headerBox"><span>Planet Name</span> <div onClick={this.handleSort('planetName')} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
-            <th><div className="headerBox"><span>Rotation period</span><div onClick={this.handleSort('rotationPeriod')} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
-            <th><div className="headerBox"><span>Orbital period</span><div onClick={this.handleSort('orbitalPeriod')} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
-            <th><div className="headerBox"><span>Diameter</span><div onClick={this.handleSort('diameter')} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
-            <th><div className="headerBox"><span>Climate</span><div onClick={this.handleSort('climate')} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
-            <th><div className="headerBox"><span>Surface water</span><div onClick={this.handleSort('surfaceWater')} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
-            <th><div className="headerBox"><span>Population</span><div onClick={this.handleSort('population')} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
+            <th><div className="headerBox"><span>Planet Name</span> <div onClick={this.handleSort("planetName")} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
+            <th><div className="headerBox"><span>Rotation period</span><div onClick={this.handleSort("rotationPeriod")} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
+            <th><div className="headerBox"><span>Orbital period</span><div onClick={this.handleSort("orbitalPeriod")} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
+            <th><div className="headerBox"><span>Diameter</span><div onClick={this.handleSort("diameter")} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
+            <th><div className="headerBox"><span>Climate</span><div onClick={this.handleSort("climate")} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
+            <th><div className="headerBox"><span>Surface water</span><div onClick={this.handleSort("surfaceWater")} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
+            <th><div className="headerBox"><span>Population</span><div onClick={this.handleSort("population")} className="sortIcon"><div>&#9650;</div><div>&#9660;</div></div></div></th>
           </tr>
         </thead>
-        {(this.props.loadingPlanets && this.props.active) &&  <tbody><tr className="planetLoader"><td colSpan={7}><ClipLoader sizeUnit={"px"} size={50} color={'#1BA1BE'} loading={this.props.loadingPlanets} /></td></tr></tbody>}
+        {(this.props.loadingPlanets && this.props.active) &&  <tbody><tr className="planetLoader"><td colSpan={7}><ClipLoader sizeUnit={"px"} size={50} color={"#1BA1BE"} loading={this.props.loadingPlanets} /></td></tr></tbody>}
         {!this.props.loadingPlanets && this.state.planetList}
       </table>
     )

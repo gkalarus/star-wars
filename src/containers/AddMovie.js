@@ -30,32 +30,16 @@ class AddMovie extends React.Component {
 
   render() {
 
-      
-    const headerStyle = {
-      backgroundColor: '#fff',
-      minHeight: '48px',
-      padding: '0',
-      width: '100%',
-      userSelect: 'none'
-    }
-
-    const headerElem = {
-      minHeight: '48px',
-      padding: '0',
-      width: '100%'
-    }
-
-
     return (
-      <Accordion style={headerStyle} className="addMovie">
+      <Accordion className="addMovie">
         <AccordionItem>
-            <AccordionItemTitle style={headerElem}>
+            <AccordionItemTitle className="accItemTitle">
               <div className="headerContainer" onClick={this.handleCollapse}>
                 <p className="add">Add Movie</p>
                 <img className="arrow" src={this.state.active ? arrowClose : arrowOpen } alt="open arrow"/>
               </div>
             </AccordionItemTitle>
-            <AccordionItemBody className={this.state.active ? 'boardContainer' : ''}>
+            <AccordionItemBody className={this.state.active ? "boardContainer" : ''}>
               <AddBoard 
                 active={this.state.active}
                 handleAddMovie={this.props.handleAddMovie}
