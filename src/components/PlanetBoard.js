@@ -1,7 +1,6 @@
 import React from 'react';
 import PlanetTable from '../containers/PlanetTable';
 
-
 const PlanetBoard = ({planetDetails, loadingPlanets, active}) => {
   return (  
       <PlanetTable 
@@ -12,5 +11,4 @@ const PlanetBoard = ({planetDetails, loadingPlanets, active}) => {
 );
 }
 
- 
 export default PlanetBoard;

@@ -8,17 +8,13 @@ import {
   AccordionItemTitle,
   AccordionItemBody,
 } from 'react-accessible-accordion';
-
 import 'react-accessible-accordion/dist/fancy-example.css';
-
-
 
 class AddMovie extends React.Component {
 
   state = {
     active: false,
   }
-
 
   handleCollapse = () => {
     this.setState(prevState => {

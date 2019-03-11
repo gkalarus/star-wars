@@ -2,7 +2,6 @@ import React from 'react';
 import PlanetList from '../components/PlanetList';
 import SelectedPlanets from '../components/SelectedPlanets';
 
-
 class AddForm extends React.Component {
 
   state = {
@@ -34,7 +33,8 @@ class AddForm extends React.Component {
         selectedPlanetsWithDetails: [],
         errors: {
           capitalLetter: false,
-          movieTitleLength: false
+          movieTitleLength: false,
+          selectedPlanets: false
         }
       })
     }
@@ -59,7 +59,6 @@ class AddForm extends React.Component {
       }
     }
   }
-
 
   handleAddMovieTitle = (e) => {
     this.setState({

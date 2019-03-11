@@ -7,7 +7,6 @@ const MovieBoard = ({movies, loadingMovies}) => {
 
   let movieList
 
-
   if(movies !== null) {
     movieList = movies.map(movie => (
       <Movie key={uuid.v4()} movie={movie} />
