@@ -32,7 +32,6 @@ class App extends Component {
     let movie = {}
     movie.title = movieTitle;
     movie.planets = planets.map(planet => planet[0].url);
-    console.log(movie)
     this.setState({
       movies: [...this.state.movies, movie]
     })  

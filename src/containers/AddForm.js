@@ -138,7 +138,6 @@ class AddForm extends React.Component {
         throw Error(response.status)
       })
       .then(data => {
-        console.log(data)
         this.setState({
           planets: [...data.results]
         })
@@ -176,7 +175,6 @@ class AddForm extends React.Component {
   }
 
   render() {
-    console.log(this.state.planets, this.state.selectedPlanets, this.state.selectedPlanetsWithDetails)
     let movieTitleRed;
     let addPlanetRed;
 
